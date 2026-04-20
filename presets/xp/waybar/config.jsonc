@@ -1,0 +1,57 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "exclusive": true,
+    "passthrough": false,
+    "modules-left": ["custom/start-button", "wlr/taskbar"],
+    "modules-center": ["niri/workspaces"],
+    "modules-right": ["custom/control-center", "battery", "clock", "custom/shutdown"],
+
+    "custom/start-button": {
+        "format": " Start ",
+        "on-click": "fuzzel",
+        "tooltip": false
+    },
+
+    "wlr/taskbar": {
+        "format": "{name}",
+        "icon-size": 18,
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+
+    "niri/workspaces": {
+        "format": "{name}",
+        "active-only": false,
+        "all-outputs": true
+    },
+
+    "custom/control-center": {
+        "format": " _ ",
+        "on-click": "makoctl dismiss -a",
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "{capacity}% ▢ ",
+        "format-charging": "{capacity}% ⚡",
+        "interval": 30,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/shutdown": {
+        "format": " X ",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}
