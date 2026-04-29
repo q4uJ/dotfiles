@@ -7,13 +7,19 @@ My personal dotfiles for a Wayland setup using **mango** (window manager), **way
 ```
 dotfiles/
 ├── presets/          # Full desktop presets — bundle wallpaper + mango + waybar + wofi
-│   ├── test/
+│   ├── blue_waves/
+│   ├── green_basic/
+│   ├── skull_black/
 │   └── xp/
 ├── standalone/       # Single-app configs that aren't part of a full preset
-│   └── waybar/
-│       └── black_basic/
+│   ├── waybar/
+│   │   ├── black_basic/
+│   │   └── monochrome/
+│   └── wofi/
+│       └── wallpaper_glass/
 ├── scripts/          # Helper scripts
 │   ├── mango_menu.sh
+│   ├── save_mango.sh
 │   └── switch_mango.sh
 └── README.md
 ```
@@ -51,6 +57,11 @@ Configs that aren't tied to a full preset — useful if you only want to grab a 
   3. Sets the wallpaper via `awww img`
   4. Copies the mango, waybar, and (if present) wofi configs into `~/.config/`
   5. Restarts waybar and reloads mango
+- **`save_mango.sh <preset>`** — Snapshots your current desktop into a new preset under `~/.config/mango_presets/<preset>/`:
+  1. Copies `~/Bilder/current_wallpaper.jpg` as the preset wallpaper (warns if missing)
+  2. Copies the active `~/.config/mango/config.conf` and `~/.config/waybar/{config.jsonc,style.css}`
+  3. Copies the active `~/.config/wofi/{config,style.css}` if present
+  4. Prompts before overwriting an existing preset
 
 ## Usage
 
@@ -70,6 +81,16 @@ cp scripts/*.sh ~/
 ```
 
 ## Adding a new preset
+
+The easiest way is to set up your desktop the way you like it (wallpaper, mango, waybar, wofi) and then run:
+
+```bash
+~/save_mango.sh <your_name>
+```
+
+That snapshots the current configs into `~/.config/mango_presets/<your_name>/`. Test it with `~/switch_mango.sh <your_name>`, then copy it into `presets/` in this repo when you're happy with it.
+
+You can also build one by hand:
 
 1. Create `~/.config/mango_presets/<your_name>/`
 2. Drop in `config.conf`, `wallpaper.jpg`, `waybar/`, and optionally `wofi/`
