@@ -1,0 +1,102 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 36,
+    "margin-bottom": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    "spacing": 6,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "custom/glyph",
+        "ext/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "memory",
+        "pulseaudio",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/glyph": {
+        "format": "✦",
+        "tooltip-format": "violet sunburst",
+        "on-click": "wofi --show drun"
+    },
+
+    "ext/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "◆",
+            "default": "·",
+            "urgent": "✦"
+        },
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-id": true
+    },
+
+    "clock": {
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%a %d %b · %H:%M}",
+        "tooltip-format": "<tt><big>{:%H:%M}</big>\n{:%A, %d %B %Y}\n\n{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "format": {
+                "months": "<span color='#c084fc'><b>{}</b></span>",
+                "days": "<span color='#e9d5ff'>{}</span>",
+                "weeks": "<span color='#7c3aed'>W{}</span>",
+                "weekdays": "<span color='#a855f7'><b>{}</b></span>",
+                "today": "<span color='#1a0d2e' background='#c084fc'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "memory": {
+        "format": "  {percentage}%",
+        "interval": 2,
+        "tooltip-format": "{used:0.1f} GiB / {total:0.1f} GiB"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  muted",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo} · {power:0.1f} W"
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip-format": "session"
+    }
+}
