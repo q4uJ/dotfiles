@@ -1,0 +1,230 @@
+/* ── violet sunburst ──────────────────────────────────────────────── */
+/*  horizontal top bar · floating pills · deep purple field            */
+/*                                                                     */
+/*  palette                                                            */
+/*    void        #0f0820   deep purple base                           */
+/*    abyss       #1a0d2e   panel surface                              */
+/*    night       #2d1b4e   raised surface / hover                     */
+/*    indigo      #4c1d95   muted accent                               */
+/*    royal       #6d28d9   primary purple                             */
+/*    violet      #8b5cf6   active accent                              */
+/*    bloom       #a855f7   highlight                                  */
+/*    glow        #c084fc   bright accent / focus ring                 */
+/*    halo        #e9d5ff   primary text                               */
+/*    mist        #f3e8ff   bright text                                */
+/* ──────────────────────────────────────────────────────────────────── */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "MesloLGS Nerd Font", "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    font-feature-settings: "tnum";
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #e9d5ff;
+}
+
+/* the bar itself — translucent ribbon over the wallpaper */
+window#waybar > box {
+    background: linear-gradient(
+        180deg,
+        rgba(26, 13, 46, 0.78) 0%,
+        rgba(15, 8, 32, 0.86) 100%
+    );
+    border: 1px solid rgba(139, 92, 246, 0.28);
+    border-radius: 18px;
+    padding: 3px 8px;
+    box-shadow:
+        0 8px 24px rgba(15, 8, 32, 0.55),
+        inset 0 1px 0 rgba(192, 132, 252, 0.08);
+}
+
+/* ── shared module surface ─────────────────────────────────────── */
+#custom-glyph,
+#workspaces,
+#clock,
+#memory,
+#pulseaudio,
+#battery,
+#tray,
+#custom-power {
+    color: #e9d5ff;
+    background: transparent;
+    padding: 0 12px;
+    margin: 4px 3px;
+    border-radius: 12px;
+    transition:
+        background-color 200ms ease,
+        color 200ms ease,
+        box-shadow 200ms ease;
+}
+
+/* ── opening glyph — sunburst star ─────────────────────────────── */
+#custom-glyph {
+    color: #c084fc;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 0 14px;
+    margin-left: 4px;
+    background: rgba(76, 29, 149, 0.35);
+    border: 1px solid rgba(192, 132, 252, 0.35);
+    text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+}
+#custom-glyph:hover {
+    color: #1a0d2e;
+    background: #c084fc;
+    box-shadow: 0 0 18px rgba(192, 132, 252, 0.7);
+}
+
+/* ── desktop indicator — constellation strip ───────────────────── */
+/*  inactive desktops fade as small dim dots, the current desktop    */
+/*  burns as a large glowing diamond — page-dot pager, not labels    */
+#workspaces {
+    padding: 0 6px;
+    background: transparent;
+    border: none;
+}
+#workspaces button {
+    color: rgba(168, 85, 247, 0.35);
+    background: transparent;
+    padding: 0 2px;
+    margin: 0 1px;
+    min-width: 18px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 400;
+    transition:
+        color 220ms ease,
+        font-size 220ms ease,
+        text-shadow 220ms ease,
+        background-color 220ms ease;
+}
+#workspaces button:hover {
+    color: #e9d5ff;
+    background: rgba(139, 92, 246, 0.15);
+}
+#workspaces button.active {
+    color: #c084fc;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 0 6px;
+    text-shadow:
+        0 0 8px rgba(192, 132, 252, 0.95),
+        0 0 16px rgba(168, 85, 247, 0.55);
+}
+#workspaces button.urgent {
+    color: #f3e8ff;
+    font-size: 14px;
+    text-shadow: 0 0 12px rgba(192, 132, 252, 0.9);
+}
+
+/* ── clock — the centerpiece ───────────────────────────────────── */
+#clock {
+    color: #f3e8ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0 18px;
+    background: rgba(76, 29, 149, 0.4);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.45);
+}
+#clock:hover {
+    background: rgba(109, 40, 217, 0.55);
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+}
+
+/* ── system readouts ───────────────────────────────────────────── */
+#memory {
+    color: #d8b4fe;
+}
+#memory:hover,
+#pulseaudio:hover,
+#battery:hover,
+#tray:hover {
+    background: rgba(139, 92, 246, 0.18);
+    color: #f3e8ff;
+}
+
+#memory.warning {
+    color: #e9d5ff;
+}
+#memory.critical {
+    color: #ffffff;
+    background: rgba(192, 132, 252, 0.25);
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+}
+
+/* ── audio ─────────────────────────────────────────────────────── */
+#pulseaudio {
+    color: #c084fc;
+}
+#pulseaudio.muted {
+    color: #6d4c9c;
+}
+
+/* ── battery ───────────────────────────────────────────────────── */
+#battery {
+    color: #d8b4fe;
+}
+#battery.charging,
+#battery.plugged {
+    color: #c084fc;
+    text-shadow: 0 0 6px rgba(192, 132, 252, 0.5);
+}
+#battery.warning:not(.charging) {
+    color: #f3e8ff;
+}
+#battery.critical:not(.charging) {
+    color: #ffffff;
+    background: rgba(192, 132, 252, 0.3);
+    box-shadow: 0 0 14px rgba(192, 132, 252, 0.7);
+}
+
+/* ── tray ──────────────────────────────────────────────────────── */
+#tray {
+    padding: 0 8px;
+    background: rgba(45, 27, 78, 0.45);
+    border: 1px solid rgba(109, 40, 217, 0.3);
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(192, 132, 252, 0.25);
+    border-radius: 6px;
+}
+
+/* ── power button — closing exclamation ────────────────────────── */
+#custom-power {
+    color: #c084fc;
+    font-size: 14px;
+    padding: 0 14px;
+    margin-right: 4px;
+    background: rgba(76, 29, 149, 0.35);
+    border: 1px solid rgba(192, 132, 252, 0.35);
+}
+#custom-power:hover {
+    color: #1a0d2e;
+    background: #c084fc;
+    box-shadow: 0 0 18px rgba(192, 132, 252, 0.75);
+}
+
+/* ── tooltips ──────────────────────────────────────────────────── */
+tooltip {
+    background: rgba(15, 8, 32, 0.96);
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    border-radius: 10px;
+}
+tooltip label {
+    color: #e9d5ff;
+    padding: 6px 10px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+}

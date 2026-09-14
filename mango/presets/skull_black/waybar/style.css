@@ -1,0 +1,68 @@
+/* Alles zurücksetzen */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+/* Die Hauptbar komplett unsichtbar machen */
+window#waybar {
+    background: transparent;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Die Buttons: Dunkelgrauer Hintergrund, weißer Text */
+#custom-distro_logo,
+#cpu,
+#memory,
+#workspaces,
+#battery,
+#clock,
+#custom-power {
+    background-color: #1a1a1a; /* Solides Dunkelgrau */
+    color: #ffffff;            /* Reinweiß */
+    margin: 4px 6px;
+    padding: 4px 18px;
+    border-radius: 15px;       /* Abgerundete Ecken */
+}
+
+/* Logo Farbe (Akzent) */
+#custom-distro_logo {
+    color: #74c7ec; 
+    font-size: 16px;
+}
+
+/* Workspace Styling */
+#workspaces button {
+    color: #888888; /* Inaktive Desktops in Grau */
+    background: transparent;
+    padding: 0 10px;
+}
+
+#workspaces button.active {
+    color: #000000; /* Aktiver Desktop in Weiß */
+    background-color: #ffffff; /* Etwas helleres Grau für den aktiven Button */
+    border-radius: 10px;
+}
+
+/* Uhrzeit-Feld (Keine Sonderfarbe, nur Weiß wie gewünscht) */
+#clock {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Power Button */
+#custom-power {
+    color: #f38ba8;
+}
+
+/* Hover-Effekt: Etwas helleres Grau beim Drüberfahren */
+#cpu:hover, 
+#memory:hover, 
+#clock:hover, 
+#battery:hover, 
+#custom-power:hover {
+    background-color: #444444;
+}

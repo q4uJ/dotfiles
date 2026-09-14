@@ -1,0 +1,179 @@
+/* ── NASA worm vertical rail ──────────────────────────────────── */
+/*  left-edge sidebar · stacked panels · FC3D21 worm-red accent     */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "MesloLGS Nerd Font", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 12px;
+    font-feature-settings: "tnum";
+    min-height: 0;
+    min-width: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #e8e8e8;
+}
+
+/* shared panel surface — vertical pills */
+#custom-nasa,
+#workspaces,
+#custom-mission,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#custom-power {
+    background-color: #0a0a0a;
+    color: #e8e8e8;
+    margin: 4px 4px;
+    padding: 8px 0;
+    border-radius: 16px;
+    border: 1px solid #161616;
+}
+
+/* the worm wordmark — vertical NASA */
+#custom-nasa {
+    color: #FC3D21;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 12px 0;
+    border: 1px solid #2a0a08;
+}
+#custom-nasa:hover {
+    background-color: #FC3D21;
+    color: #0a0a0a;
+    box-shadow: 0 0 16px rgba(252, 61, 33, 0.55);
+}
+
+/* mission slots — stacked workspaces */
+#workspaces {
+    padding: 6px 0;
+}
+#workspaces button {
+    color: #555555;
+    background: transparent;
+    padding: 4px 0;
+    margin: 3px 5px;
+    min-width: 0;
+    border-radius: 10px;
+    transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+#workspaces button:hover {
+    color: #e8e8e8;
+    background-color: #161616;
+}
+#workspaces button.active {
+    color: #ffffff;
+    background-color: #FC3D21;
+    box-shadow: 0 0 10px rgba(252, 61, 33, 0.55);
+}
+#workspaces button.urgent {
+    color: #FC3D21;
+    background-color: #2a0a08;
+}
+
+/* mission elapsed time */
+#custom-mission {
+    color: #b8b8b8;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 6px 0;
+}
+
+/* clock — the big readout (HH / MM stacked) */
+#clock {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 10px 0;
+}
+
+/* system readouts — icon over value */
+#cpu,
+#memory,
+#battery {
+    font-size: 12px;
+}
+
+/* network / volume — icon only, tooltip carries the data */
+#network,
+#pulseaudio {
+    font-size: 14px;
+    padding: 8px 0;
+}
+
+/* battery state colors */
+#battery.warning {
+    color: #f5b46f;
+}
+#battery.critical {
+    color: #FC3D21;
+    background-color: #1a0707;
+    border-color: #2a0a08;
+}
+#battery.charging,
+#battery.plugged {
+    color: #9AF764;
+}
+
+#network.disconnected {
+    color: #FC3D21;
+}
+
+#pulseaudio.muted {
+    color: #777777;
+}
+
+/* tray — icons stack vertically */
+#tray {
+    padding: 6px 0;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* abort / power */
+#custom-power {
+    color: #FC3D21;
+    font-size: 16px;
+    padding: 12px 0;
+    border: 1px solid #2a0a08;
+}
+#custom-power:hover {
+    background-color: #FC3D21;
+    color: #0a0a0a;
+    box-shadow: 0 0 14px rgba(252, 61, 33, 0.6);
+}
+
+/* generic hover */
+#custom-mission:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#clock:hover,
+#tray:hover {
+    background-color: #141414;
+}
+
+/* tooltip — mission control comm */
+tooltip {
+    background-color: #0a0a0a;
+    border: 1px solid #FC3D21;
+    border-radius: 10px;
+}
+tooltip label {
+    color: #e8e8e8;
+    padding: 4px 8px;
+}
